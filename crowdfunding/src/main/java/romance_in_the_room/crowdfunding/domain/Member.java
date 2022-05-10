@@ -15,10 +15,14 @@ public class Member {
     @Id @GeneratedValue
     private Long id;
 
+    private String password;
+
     @Email
     private String email;
 
     private String username;
-    private String password;
+
+
+
 
 }
