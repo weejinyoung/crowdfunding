@@ -5,13 +5,16 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter @Setter
 public class Member {
 
     @Id @GeneratedValue
+    @Column(name = "member_id")
     private Long id;
 
     private String password;
@@ -24,4 +27,7 @@ public class Member {
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdDate;
+
+    @OneToMany(mappedBy = "member")
+    private List<Funding> fundings = new ArrayList<>();
 }
