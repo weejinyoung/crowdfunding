@@ -16,4 +16,9 @@ public class Funding {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     public Member member;
+
+/*
+    @OneToMany(mappedBy = "funding", cascade = CascadeType.ALL)
+    private List
+*/
 }
