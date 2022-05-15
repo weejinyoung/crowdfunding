@@ -20,7 +20,7 @@ public class Member {
     private String password;
 
     @Column(name = "name")
-    private String username;
+    private String name;
 
     @Email
     private String email;

@@ -3,6 +3,7 @@ package romance_in_the_room.crowdfunding.domain.project;
 import lombok.Getter;
 
 import javax.persistence.Embeddable;
+import javax.persistence.Lob;
 import java.util.Date;
 import java.util.List;
 

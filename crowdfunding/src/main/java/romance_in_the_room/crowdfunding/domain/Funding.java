@@ -3,6 +3,8 @@ package romance_in_the_room.crowdfunding.domain;
 import lombok.Getter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -17,8 +19,8 @@ public class Funding {
     @JoinColumn(name = "member_id")
     public Member member;
 
-/*
+
     @OneToMany(mappedBy = "funding", cascade = CascadeType.ALL)
-    private List
-*/
+    private List<FundingProject> fundingProjects = new ArrayList<>();
+
 }
