@@ -19,7 +19,6 @@ public class Funding {
     @JoinColumn(name = "member_id")
     public Member member;
 
-
     @OneToMany(mappedBy = "funding", cascade = CascadeType.ALL)
     private List<FundingProject> fundingProjects = new ArrayList<>();
 
