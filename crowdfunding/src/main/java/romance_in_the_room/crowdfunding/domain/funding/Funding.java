@@ -1,6 +1,7 @@
-package romance_in_the_room.crowdfunding.domain;
+package romance_in_the_room.crowdfunding.domain.funding;
 
 import lombok.Getter;
+import romance_in_the_room.crowdfunding.domain.member.Member;
 import romance_in_the_room.crowdfunding.domain.project.Project;
 
 import javax.persistence.*;
@@ -18,7 +19,7 @@ public class Funding {
     @JoinColumn(name = "member_id")
     public Member member;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "project_id")
     private Project project;
 

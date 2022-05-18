@@ -1,14 +1,14 @@
-package romance_in_the_room.crowdfunding.domain;
+package romance_in_the_room.crowdfunding.domain.member;
 
 import lombok.Getter;
 import lombok.Setter;
+import romance_in_the_room.crowdfunding.domain.funding.Funding;
 import romance_in_the_room.crowdfunding.domain.project.Project;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Entity
