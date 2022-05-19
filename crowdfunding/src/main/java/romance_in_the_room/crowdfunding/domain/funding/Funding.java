@@ -20,16 +20,23 @@ public class Funding {
     @JoinColumn(name = "member_id")
     public Member member;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "project_id")
     private Project project;
 
     private LocalDateTime fundingDate;
 
-    //연관관계 메서드//
+    //멤버 연관관계 메서드//
     public void setMember(Member member) {
         this.member = member;
         member.getFundings().add(this);
     }
+
+    //프로젝트 연관관계 메서드//
+    public void setProject(Project project) {
+        this.project = project;
+        //project.getFunding().add(this);
+    }
+
 
 }
