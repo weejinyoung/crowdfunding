@@ -26,5 +26,8 @@ public class Project {
     private String projectName;
 
     @Embedded
-    private ProjectFixedForm form;
+    private ProjectFundingInfo fundingInfo;
+
+    @Embedded
+    private ProjectDateInfo dateInfo;
 }
