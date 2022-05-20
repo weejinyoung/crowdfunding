@@ -10,6 +10,6 @@ public class FundingService {
 
     private final FundingRepository fundingRepository;
 
-    
+
 
 }
