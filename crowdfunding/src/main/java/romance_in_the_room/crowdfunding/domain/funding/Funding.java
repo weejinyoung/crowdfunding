@@ -35,7 +35,7 @@ public class Funding {
     //프로젝트 연관관계 메서드//
     public void setProject(Project project) {
         this.project = project;
-        //project.getFunding().add(this);
+        project.getFundings().add(this);
     }
 
 

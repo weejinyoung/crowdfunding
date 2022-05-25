@@ -7,6 +7,7 @@ import romance_in_the_room.crowdfunding.domain.project.Project;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,9 +25,12 @@ public class Member {
     @Column(name = "member_id")
     private Long id;
 
+    @NotEmpty
+    private String myId;
+
+    @NotEmpty
     private String password;
 
-    @Column(name = "name")
     private String name;
 
     @Email
@@ -39,4 +43,12 @@ public class Member {
 
     @OneToMany(mappedBy = "member")
     private List<Project> projects = new ArrayList<>();
+
+    public void createBasicInfo(String myId, String password, String name, String email) {
+        this.myId = myId;
+        this.password = password;
+        this.name = name;
+        this.email = email;
+        this.createdDate = LocalDateTime.now();
+    }
 }
