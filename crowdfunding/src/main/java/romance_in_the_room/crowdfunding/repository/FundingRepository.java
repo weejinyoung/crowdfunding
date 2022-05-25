@@ -14,7 +14,7 @@ public class FundingRepository {
 
     private final EntityManager em;
 
-    public Long funding(Funding funding) {
+    public Long save(Funding funding) {
         em.persist(funding);
         return funding.getId();
     }

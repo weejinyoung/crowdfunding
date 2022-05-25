@@ -38,5 +38,12 @@ public class Funding {
         project.getFundings().add(this);
     }
 
+    public static Funding createFunding(Member member, Project project) {
+        Funding funding = new Funding();
+        funding.setMember(member);
+        funding.setProject(project);
+        return funding;
+    }
+
 
 }
