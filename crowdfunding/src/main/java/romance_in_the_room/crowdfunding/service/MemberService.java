@@ -12,8 +12,7 @@ public class MemberService {
     private final MemberRepository memberRepository;
 
     public Long saveMember(Member member) {
-        return null;
+        return memberRepository.save(member);
     }
-
 
 }

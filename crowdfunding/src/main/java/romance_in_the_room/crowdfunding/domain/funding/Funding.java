@@ -44,6 +44,4 @@ public class Funding {
         funding.setProject(project);
         return funding;
     }
-
-
 }
