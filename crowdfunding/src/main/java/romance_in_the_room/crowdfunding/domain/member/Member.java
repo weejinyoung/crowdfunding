@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter @Setter
+@Getter
 //멤버 입장에서 One, 프로젝트 입장에선 Many이기 때문에 OneToMany
 //한 프로젝트의 소유주는 멤버 한명, 하지만 멤버는 여러가지의 프로젝트를 소유할 수 있다
 //객체는 단방향 연결 두개, 디비는 양방향 따라서 두개의 패러다임 불일치
@@ -45,16 +45,15 @@ public class Member {
     private List<Project> projects = new ArrayList<>();
 
     //protected 기본 생성자
-    Member() {
-
-    }
-
-    public static Member createBasicInfo(String myId, String password, String name, String email) {
-        Member member = new Member();
+    protected Member (String myId, String password, String name, String email) {
         this.myId = myId;
         this.password = password;
         this.name = name;
         this.email = email;
         this.createdDate = LocalDateTime.now();
+    }
+
+    public static Member createBasicInfo (String myId, String password, String name, String email) {
+       return new Member(myId, password, name, email);
     }
 }

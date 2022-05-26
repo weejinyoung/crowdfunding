@@ -20,8 +20,7 @@ public class MemberController {
 
     @GetMapping("/crowdfunding/member")
     public CreateMemberResponse saveMember(@RequestBody @Valid CreateMemberRequest request) {
-        Member member = new Member();
-        member.createBasicInfo(request.getMyId(), request.getPassword(), request.getName(), request.getEmail());
+        Member member = Member.createBasicInfo(request.getMyId(), request.getPassword(), request.getName(), request.getEmail());
         Long id = memberService.saveMember(member);
         return new CreateMemberResponse(id);
     }
