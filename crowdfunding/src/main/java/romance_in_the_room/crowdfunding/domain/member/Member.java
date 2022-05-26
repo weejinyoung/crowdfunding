@@ -44,7 +44,13 @@ public class Member {
     @OneToMany(mappedBy = "member")
     private List<Project> projects = new ArrayList<>();
 
-    public void createBasicInfo(String myId, String password, String name, String email) {
+    //protected 기본 생성자
+    Member() {
+
+    }
+
+    public static Member createBasicInfo(String myId, String password, String name, String email) {
+        Member member = new Member();
         this.myId = myId;
         this.password = password;
         this.name = name;
