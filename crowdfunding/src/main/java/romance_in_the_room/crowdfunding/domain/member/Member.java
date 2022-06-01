@@ -2,7 +2,8 @@ package romance_in_the_room.crowdfunding.domain.member;
 
 import lombok.Getter;
 import lombok.Setter;
-import romance_in_the_room.crowdfunding.domain.funding.Funding;
+import romance_in_the_room.crowdfunding.domain.funding.Support;
+import romance_in_the_room.crowdfunding.domain.funding.Support;
 import romance_in_the_room.crowdfunding.domain.project.Project;
 
 import javax.persistence.*;
@@ -38,10 +39,10 @@ public class Member {
 
     private LocalDateTime createdDate;
 
-    @OneToMany(mappedBy = "member")
-    private List<Funding> fundings = new ArrayList<>();
+    @OneToMany(mappedBy = "supporter")
+    private List<Support> supports = new ArrayList<>();
 
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "projectMaker")
     private List<Project> projects = new ArrayList<>();
 
 

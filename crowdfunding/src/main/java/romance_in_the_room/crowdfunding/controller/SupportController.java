@@ -6,32 +6,31 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
-import romance_in_the_room.crowdfunding.domain.funding.Funding;
-import romance_in_the_room.crowdfunding.service.FundingService;
+import romance_in_the_room.crowdfunding.service.SupportService;
 
 import javax.validation.Valid;
 
 @RestController
 @RequiredArgsConstructor
-public class FundingController {
+public class SupportController {
 
-    private final FundingService fundingService;
+    private final SupportService supportService;
 
-    @PostMapping("/crowdfunding/funding")
-    public PostFundingResponse createFundingRequest(@PathVariable @Valid PostFundingRequest request) {
-        Long fundingId = fundingService.funding(request.getMemberId(), request.getProjectId());
-        return new PostFundingResponse(fundingId);
+    @PostMapping("/crowdfunding/support")
+    public SupportProjectResponse supportProjectRequest(@PathVariable @Valid SupportProjectRequest request) {
+        Long supportId = supportService.support(request.getMemberId(), request.getProjectId());
+        return new SupportProjectResponse(supportId);
     }
 
     @Data
     @AllArgsConstructor
-    static class PostFundingResponse {
+    static class SupportProjectResponse {
         private Long id;
     }
 
     @Data
     @AllArgsConstructor
-    static class PostFundingRequest {
+    static class SupportProjectRequest {
         private Long memberId;
         private Long projectId;
     }

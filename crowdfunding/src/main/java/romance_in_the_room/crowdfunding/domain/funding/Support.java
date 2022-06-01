@@ -9,16 +9,16 @@ import java.time.LocalDateTime;
 
 @Entity
 @Getter
-public class Funding {
+public class Support {
 
     @Id
     @GeneratedValue
-    @Column(name = "funding_id")
+    @Column(name = "support_id")
     public Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
-    public Member member;
+    public Member supporter;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "project_id")
@@ -27,21 +27,21 @@ public class Funding {
     private LocalDateTime fundingDate;
 
     //멤버 연관관계 메서드//
-    public void setMember(Member member) {
-        this.member = member;
-        member.getFundings().add(this);
+    public void setMember(Member supporter) {
+        this.supporter = supporter;
+        supporter.getSupports().add(this);
     }
 
     //프로젝트 연관관계 메서드//
     public void setProject(Project project) {
         this.project = project;
-        project.getFundings().add(this);
+        project.getSupports().add(this);
     }
 
-    public static Funding createFunding(Member member, Project project) {
-        Funding funding = new Funding();
-        funding.setMember(member);
-        funding.setProject(project);
-        return funding;
+    public static Support supportProject (Member member, Project project) {
+        Support support = new Support();
+        support.setMember(member);
+        support.setProject(project);
+        return support;
     }
 }
