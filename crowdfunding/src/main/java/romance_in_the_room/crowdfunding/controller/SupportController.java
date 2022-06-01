@@ -17,7 +17,7 @@ public class SupportController {
     private final SupportService supportService;
 
     @PostMapping("/crowdfunding/support")
-    public SupportProjectResponse supportProjectRequest(@PathVariable @Valid SupportProjectRequest request) {
+    public SupportProjectResponse supportProject (@PathVariable @Valid SupportProjectRequest request) {
         Long supportId = supportService.support(request.getMemberId(), request.getProjectId());
         return new SupportProjectResponse(supportId);
     }

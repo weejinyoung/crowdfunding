@@ -13,7 +13,8 @@ import java.util.List;
 @Getter
 public class Project {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     @Column(name = "project_id")
     private Long id;
 
@@ -24,7 +25,23 @@ public class Project {
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
     private List<Support> supports = new ArrayList<>();
 
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private ProjectGoal projectGoal;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private ProjectStory projectStory;
+
+
     private String projectName;
 
-    private LocalDateTime projectPostDate;
+    private LocalDateTime projectOpenDate;
+
+    public void setProjectMaker() {
+
+    }
+
+    public void postProject() {
+
+    }
+
 }

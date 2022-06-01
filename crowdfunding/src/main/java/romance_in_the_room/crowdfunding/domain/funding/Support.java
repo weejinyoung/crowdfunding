@@ -24,10 +24,10 @@ public class Support {
     @JoinColumn(name = "project_id")
     private Project project;
 
-    private LocalDateTime fundingDate;
+    private LocalDateTime supportDate;
 
     //멤버 연관관계 메서드//
-    public void setMember(Member supporter) {
+    public void setSupporter(Member supporter) {
         this.supporter = supporter;
         supporter.getSupports().add(this);
     }
@@ -40,7 +40,7 @@ public class Support {
 
     public static Support supportProject (Member member, Project project) {
         Support support = new Support();
-        support.setMember(member);
+        support.setSupporter(member);
         support.setProject(project);
         return support;
     }
