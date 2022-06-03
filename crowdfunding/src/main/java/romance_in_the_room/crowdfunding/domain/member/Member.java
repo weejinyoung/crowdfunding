@@ -59,7 +59,11 @@ public class Member {
 
     }
 
-    public static Member createBasicInfo (String myId, String password, String name, String email) {
+    public static Member createMember(String myId, String password, String name, String email) {
        return new Member(myId, password, name, email);
     }
+
+   /* public static Member findMember(String myId, String password) {
+
+    }*/
 }

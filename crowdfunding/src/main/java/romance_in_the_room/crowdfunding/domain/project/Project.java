@@ -31,16 +31,12 @@ public class Project {
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private ProjectStory projectStory;
 
-
     private String projectName;
 
     private LocalDateTime projectOpenDate;
 
-    public void setProjectMaker() {
-
-    }
-
     public void postProject() {
+
 
     }
 
