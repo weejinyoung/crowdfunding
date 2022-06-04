@@ -21,15 +21,26 @@ public class MemberController {
     @PostMapping ("/crowdfunding/member/join")
     public joinNewMemberResponse joinNewMember(@RequestBody @Valid joinNewMemberRequest request) {
         Member member = Member.createMember(request.getMyId(), request.getPassword(), request.getName(), request.getEmail());
-        Long id = memberService.saveMember(member);
+        Long id = memberService.join(member);
         return new joinNewMemberResponse(id);
     }
 
-    @GetMapping("/crowdfunding/member/find-my-info")
-    public findMemberResponse findMy(@RequestBody @Valid findMemberRequest request) {
-        Member member = memberService.findMember(request.getMyId(), request.getPassword());
+    @GetMapping("/crowdfunding/member/find-my-info/id")
+    public findMemberResponse findMyInfo(@RequestBody @Valid findMemberRequest request) {
+        Member member = memberService.findMember(request.getMyId());
         return new findMemberResponse();
     }
+
+    @GetMapping("/crowdfunding/member/login")
+    public loginMemberResponse loginMember(@RequestBody @Valid loginMemberRequest request) {
+
+    }
+
+    @GetMapping("/crowdfunding/member/logout")
+    public logoutMemberResponse logoutMember(@RequestBody @Valid logoutMemberRequest request) {
+
+    }
+
 
     @Data
     @AllArgsConstructor
@@ -56,5 +67,25 @@ public class MemberController {
     static class findMemberRequest {
         public Long myId;
         public String password;
+    }
+
+    @Data
+    @AllArgsConstructor
+    static class loginMemberResponse {
+    }
+
+    @Data
+    @AllArgsConstructor
+    static class loginMemberRequest {
+    }
+
+    @Data
+    @AllArgsConstructor
+    static class logoutMemberResponse {
+    }
+
+    @Data
+    @AllArgsConstructor
+    static class logoutMemberRequest {
     }
 }
