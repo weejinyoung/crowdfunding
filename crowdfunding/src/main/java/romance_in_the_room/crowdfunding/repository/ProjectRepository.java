@@ -13,7 +13,7 @@ public class ProjectRepository {
 
     private final EntityManager em;
 
-    public Long postProject(Project project) {
+    public Long saveProject(Project project) {
         em.persist(project);
         return project.getId();
     }

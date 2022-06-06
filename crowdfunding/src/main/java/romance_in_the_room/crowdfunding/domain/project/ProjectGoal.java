@@ -8,7 +8,11 @@ import javax.persistence.*;
 @Getter
 public class ProjectGoal {
 
-    @Id
-    @OneToOne(mappedBy = "projectGoal")
-    private Project project;
+    @Id @GeneratedValue
+    @Column(name = "projectGoal_id")
+    private Long id;
+
+
+
+
 }

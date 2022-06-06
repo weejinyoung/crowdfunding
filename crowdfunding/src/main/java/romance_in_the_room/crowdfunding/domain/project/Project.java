@@ -26,18 +26,29 @@ public class Project {
     private List<Support> supports = new ArrayList<>();
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "projectGoal_id")
     private ProjectGoal projectGoal;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Embedded
     private ProjectStory projectStory;
 
     private String projectName;
 
     private LocalDateTime projectOpenDate;
 
-    public void postProject() {
-
+    protected Project() {
 
     }
 
+    protected  Project(String projectName, Member member, ProjectGoal projectGoal, ProjectStory projectStory) {
+        this.projectName = projectName;
+        this.projectMaker = member;
+        this.projectGoal = projectGoal;
+        this.projectStory = projectStory;
+        this.projectOpenDate = LocalDateTime.now();
+    }
+
+    public static Project createProject(String projectName, Member member, ProjectGoal projectGoal, ProjectStory projectStory) {
+        return new Project(projectName, member, projectGoal, projectStory);
+    }
 }

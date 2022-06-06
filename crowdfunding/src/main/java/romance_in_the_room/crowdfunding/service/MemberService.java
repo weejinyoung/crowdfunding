@@ -18,7 +18,7 @@ public class MemberService {
     @Transactional
     public Long join(Member member) {
         validateDuplicateMember(member.getMyId());
-        return memberRepository.save(member);
+        return memberRepository.saveMember(member);
     }
 
     public Member findMember(Long memberId) {
