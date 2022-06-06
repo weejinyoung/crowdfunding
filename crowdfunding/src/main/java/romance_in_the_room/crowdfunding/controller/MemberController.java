@@ -33,12 +33,12 @@ public class MemberController {
 
     @GetMapping("/crowdfunding/member/login")
     public loginMemberResponse loginMember(@RequestBody @Valid loginMemberRequest request) {
-
+        return null;
     }
 
     @GetMapping("/crowdfunding/member/logout")
     public logoutMemberResponse logoutMember(@RequestBody @Valid logoutMemberRequest request) {
-
+        return null;
     }
 
 

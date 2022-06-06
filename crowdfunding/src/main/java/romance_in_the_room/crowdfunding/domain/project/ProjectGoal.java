@@ -8,11 +8,16 @@ import javax.persistence.*;
 @Getter
 public class ProjectGoal {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     @Column(name = "projectGoal_id")
     private Long id;
 
+    protected ProjectGoal() {
 
+    }
 
-
+    public static ProjectGoal createProjectGoal() {
+        return new ProjectGoal();
+    }
 }

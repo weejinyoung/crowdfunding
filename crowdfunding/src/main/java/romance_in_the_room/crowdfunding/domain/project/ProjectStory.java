@@ -10,5 +10,4 @@ import javax.persistence.OneToOne;
 @Embeddable
 public class ProjectStory {
 
-
 }
