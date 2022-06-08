@@ -27,7 +27,7 @@ public class Member {
     private Long id;
 
     @NotEmpty
-    private String myId;
+    private String loginId;
 
     @NotEmpty
     private String password;
@@ -46,8 +46,8 @@ public class Member {
     private List<Project> projects = new ArrayList<>();
 
 
-    protected Member (String myId, String password, String name, String email) {
-        this.myId = myId;
+    protected Member (String loginId, String password, String name, String email) {
+        this.loginId = loginId;
         this.password = password;
         this.name = name;
         this.email = email;

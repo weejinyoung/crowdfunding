@@ -27,21 +27,26 @@ public class Support {
     private LocalDateTime supportDate;
 
     //멤버 연관관계 메서드//
-    public void setSupporter(Member supporter) {
+    private void setSupporter(Member supporter) {
         this.supporter = supporter;
         supporter.getSupports().add(this);
     }
 
     //프로젝트 연관관계 메서드//
-    public void setProject(Project project) {
+    private void setProject(Project project) {
         this.project = project;
         project.getSupports().add(this);
+    }
+
+    private void setSupportDate() {
+        this.supportDate = LocalDateTime.now();
     }
 
     public static Support supportProject (Member member, Project project) {
         Support support = new Support();
         support.setSupporter(member);
         support.setProject(project);
+        support.setSupportDate();
         return support;
     }
 }
