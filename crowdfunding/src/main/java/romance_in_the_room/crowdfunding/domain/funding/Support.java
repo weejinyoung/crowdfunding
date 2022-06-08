@@ -16,7 +16,7 @@ public class Support {
     @Column(name = "support_id")
     public Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "member_id")
     public Member supporter;
 
