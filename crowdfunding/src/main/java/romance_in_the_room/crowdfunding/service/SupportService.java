@@ -10,6 +10,8 @@ import romance_in_the_room.crowdfunding.repository.MemberRepository;
 import romance_in_the_room.crowdfunding.repository.ProjectRepository;
 import romance_in_the_room.crowdfunding.repository.SupportRepository;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class SupportService {
@@ -24,5 +26,13 @@ public class SupportService {
         Project project = projectRepository.findOne(projectId);
         Support support = Support.createSupport(member, project);
         return supportRepository.save(support);
+    }
+
+    public List<Support> findSupportBySupporter(String name) {
+        return supportRepository.findBySupporter(name);
+    }
+
+    public List<Support> findSupportByProject(String projectName) {
+        return supportRepository.findByProject(projectName);
     }
 }
