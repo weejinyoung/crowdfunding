@@ -40,7 +40,7 @@ public class Project {
 
     }
 
-    protected  Project(String projectName, Member member, ProjectGoal projectGoal, ProjectStory projectStory) {
+    protected Project(String projectName, Member member, ProjectGoal projectGoal, ProjectStory projectStory) {
         this.projectName = projectName;
         this.projectMaker = member;
         this.projectGoal = projectGoal;

@@ -19,7 +19,7 @@ public class SupportService {
     private final ProjectRepository projectRepository;
 
     @Transactional
-    public Long support(Long memberId, Long projectId) {
+    public Long supportProject(Long memberId, Long projectId) {
         Member member = memberRepository.findOne(memberId);
         Project project = projectRepository.findOne(projectId);
         Support support = Support.createSupport(member, project);

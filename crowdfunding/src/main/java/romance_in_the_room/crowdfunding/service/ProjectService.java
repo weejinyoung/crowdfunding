@@ -12,6 +12,6 @@ public class ProjectService {
     private final ProjectRepository projectRepository;
 
     public Long postProject(Project project) {
-        return projectRepository.saveProject(project);
+        return projectRepository.save(project);
     }
 }

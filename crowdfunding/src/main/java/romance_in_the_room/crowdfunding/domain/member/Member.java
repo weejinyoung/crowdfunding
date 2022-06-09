@@ -25,11 +25,14 @@ public class Member {
     private Long id;
 
     @NotEmpty
+    @Column(unique = true)
     private String loginId;
 
     @NotEmpty
+    @Column(unique = true)
     private String password;
 
+    @Column(unique = true)
     private String name;
 
     @Email

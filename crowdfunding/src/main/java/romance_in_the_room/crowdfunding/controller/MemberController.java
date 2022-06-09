@@ -19,13 +19,13 @@ public class MemberController {
     @PostMapping ("member/join")
     public joinNewMemberResponse joinNewMember(@RequestBody @Valid joinNewMemberRequest request) {
         Member member = Member.createMember(request.getMyId(), request.getPassword(), request.getName(), request.getEmail());
-        Long id = memberService.join(member);
+        Long id = memberService.joinMember(member);
         return new joinNewMemberResponse(id);
     }
 
     @GetMapping("member/find-my-info/id")
     public findMemberResponse findMyInfo(@RequestBody @Valid findMemberRequest request) {
-        Member member = memberService.findMember(request.getMyId());
+        Member findMember = memberService.findMember(request.getMyId());
         return new findMemberResponse();
     }
 
