@@ -1,4 +1,4 @@
-package romance_in_the_room.crowdfunding.domain.funding;
+package romance_in_the_room.crowdfunding.domain.support;
 
 import lombok.Getter;
 import romance_in_the_room.crowdfunding.domain.member.Member;
@@ -27,8 +27,8 @@ public class Support {
     private LocalDateTime supportDate;
 
     //멤버 연관관계 메서드//
-    private void setSupporter(Member supporter) {
-        this.supporter = supporter;
+    private void addSupport(Member member) {
+        this.supporter = member;
         supporter.getSupports().add(this);
     }
 
@@ -42,9 +42,9 @@ public class Support {
         this.supportDate = LocalDateTime.now();
     }
 
-    public static Support supportProject (Member member, Project project) {
+    public static Support createSupport(Member member, Project project) {
         Support support = new Support();
-        support.setSupporter(member);
+        support.addSupport(member);
         support.setProject(project);
         support.setSupportDate();
         return support;

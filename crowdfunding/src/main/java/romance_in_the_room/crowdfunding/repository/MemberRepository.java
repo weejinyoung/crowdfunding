@@ -33,7 +33,7 @@ public class MemberRepository {
                 .getResultList();
     }
 
-    public Member findByMyId(String myId) {
+    public Member findByLoginId(String myId) {
         return em.createQuery("select m from Member m where m.loginId = :loginId", Member.class)
                 .setParameter("loginId", myId)
                 .getSingleResult();

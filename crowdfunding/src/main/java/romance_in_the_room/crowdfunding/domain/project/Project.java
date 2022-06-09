@@ -1,7 +1,7 @@
 package romance_in_the_room.crowdfunding.domain.project;
 
 import lombok.Getter;
-import romance_in_the_room.crowdfunding.domain.funding.Support;
+import romance_in_the_room.crowdfunding.domain.support.Support;
 import romance_in_the_room.crowdfunding.domain.member.Member;
 
 import javax.persistence.*;

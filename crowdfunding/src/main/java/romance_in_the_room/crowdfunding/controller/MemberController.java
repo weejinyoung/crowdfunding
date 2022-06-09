@@ -3,10 +3,7 @@ package romance_in_the_room.crowdfunding.controller;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import romance_in_the_room.crowdfunding.domain.member.Member;
 import romance_in_the_room.crowdfunding.service.MemberService;
 
@@ -14,29 +11,30 @@ import javax.validation.Valid;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/crowdfunding/")
 public class MemberController {
 
     private final MemberService memberService;
 
-    @PostMapping ("/crowdfunding/member/join")
+    @PostMapping ("member/join")
     public joinNewMemberResponse joinNewMember(@RequestBody @Valid joinNewMemberRequest request) {
         Member member = Member.createMember(request.getMyId(), request.getPassword(), request.getName(), request.getEmail());
         Long id = memberService.join(member);
         return new joinNewMemberResponse(id);
     }
 
-    @GetMapping("/crowdfunding/member/find-my-info/id")
+    @GetMapping("member/find-my-info/id")
     public findMemberResponse findMyInfo(@RequestBody @Valid findMemberRequest request) {
         Member member = memberService.findMember(request.getMyId());
         return new findMemberResponse();
     }
 
-    @GetMapping("/crowdfunding/member/login")
+    @GetMapping("member/login")
     public loginMemberResponse loginMember(@RequestBody @Valid loginMemberRequest request) {
         return null;
     }
 
-    @GetMapping("/crowdfunding/member/logout")
+    @GetMapping("member/logout")
     public logoutMemberResponse logoutMember(@RequestBody @Valid logoutMemberRequest request) {
         return null;
     }
