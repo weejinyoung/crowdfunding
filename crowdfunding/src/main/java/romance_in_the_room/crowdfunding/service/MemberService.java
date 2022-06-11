@@ -29,11 +29,14 @@ public class MemberService {
         return memberRepository.findAll();
     }
 
-    private void validateDuplicateMember(String myId) {
-        Member findMember = memberRepository.findByLoginId(myId);
+    public Member findMemberByLoginInfo(String loginId, String password) {
+        return memberRepository.findByLoginIdAndPassword(loginId, password);
+    }
+
+    private void validateDuplicateMember(String loginId) {
+        Member findMember = memberRepository.findByLoginId(loginId);
         if (findMember == null) {
             throw new IllegalStateException("이미 존재하는 회원입니다.");
         }
     }
-
 }

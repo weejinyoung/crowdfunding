@@ -45,4 +45,13 @@ public class MemberRepository {
                 .getSingleResult();
     }
 
+    public Member findByLoginIdAndPassword(String loginId, String password) {
+        return em.createQuery("select m from Member m " +
+                        "where m.password = :password and m.loginId = :loginId", Member.class)
+                .setParameter("loginId", loginId)
+                .setParameter("password", password)
+                .getSingleResult();
+    }
+
+
 }

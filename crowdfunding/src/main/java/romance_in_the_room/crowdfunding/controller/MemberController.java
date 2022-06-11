@@ -31,6 +31,7 @@ public class MemberController {
 
     @GetMapping("member/login")
     public loginMemberResponse loginMember(@RequestBody @Valid loginMemberRequest request) {
+        Member loginMember = memberService.findMemberByLoginInfo(request.getLoginId(), request.getPassword());
         return null;
     }
 
@@ -75,6 +76,8 @@ public class MemberController {
     @Data
     @AllArgsConstructor
     static class loginMemberRequest {
+        private String loginId;
+        private String password;
     }
 
     @Data
