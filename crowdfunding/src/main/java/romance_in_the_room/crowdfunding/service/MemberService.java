@@ -29,8 +29,15 @@ public class MemberService {
         return memberRepository.findAll();
     }
 
-    public Member findMemberByLoginInfo(String loginId, String password) {
-        return memberRepository.findByLoginIdAndPassword(loginId, password);
+    public Member findMemberByLoginRequest(String loginId, String password) {
+        Member findMember = memberRepository.findByLoginId(loginId);
+        if(findMember == null) {
+            throw new IllegalStateException("아이디를 확인해주세요");
+        }
+        if (!findMember.getPassword().equals(password)) {
+            throw new IllegalStateException("비밀번호를 확인해주세요");
+        }
+        return findMember;
     }
 
     private void validateDuplicateMember(String loginId) {
