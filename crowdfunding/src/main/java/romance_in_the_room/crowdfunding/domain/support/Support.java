@@ -27,7 +27,7 @@ public class Support {
     private LocalDateTime supportDate;
 
     //멤버 연관관계 메서드//
-    private void addSupport(Member member) {
+    private void setSupporter(Member member) {
         this.supporter = member;
         supporter.getSupports().add(this);
     }
@@ -44,7 +44,7 @@ public class Support {
 
     public static Support createSupport(Member member, Project project) {
         Support support = new Support();
-        support.addSupport(member);
+        support.setSupporter(member);
         support.setProject(project);
         support.setSupportDate();
         return support;
