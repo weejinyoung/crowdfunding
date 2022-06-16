@@ -33,4 +33,10 @@ public class ProjectRepository {
                 .setParameter("projectName", projectName)
                 .getResultList();
     }
+
+    public List<Project> findByProjectMaker(String projectMaker) {
+        return em.createQuery("select p from Project p where p.projectMaker = :projectMaker", Project.class)
+                .setParameter("projectMaker", projectMaker)
+                .getResultList();
+    }
 }

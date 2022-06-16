@@ -24,4 +24,8 @@ public class ProjectService {
     public List<Project> findProjectByName(String projectName) {
         return projectRepository.findByName(projectName);
     }
+
+    public List<Project> findProjectByProjectMaker(String projectMaker) {
+        return projectRepository.findByProjectMaker(projectMaker);
+    }
 }
