@@ -2,6 +2,7 @@ package romance_in_the_room.crowdfunding.domain.member;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import romance_in_the_room.crowdfunding.domain.support.Support;
 import romance_in_the_room.crowdfunding.domain.project.Project;
 
@@ -14,7 +15,7 @@ import java.util.List;
 
 @Entity
 @Getter
-@Builder
+@NoArgsConstructor
 //멤버 입장에서 One, 프로젝트 입장에선 Many이기 때문에 OneToMany
 //한 프로젝트의 소유주는 멤버 한명, 하지만 멤버는 여러가지의 프로젝트를 소유할 수 있다
 //객체는 단방향 연결 두개, 디비는 양방향 따라서 두개의 패러다임 불일치
@@ -34,9 +35,11 @@ public class Member {
     @Column(unique = true)
     private String password;
 
+    @NotEmpty
     @Column(unique = true)
     private String name;
 
+    @NotEmpty
     @Email
     private String email;
 
@@ -57,16 +60,7 @@ public class Member {
         this.createdDate = LocalDateTime.now();
     }
 
-    //protected 기본 생성자
-    protected Member() {
-
-    }
-
     public static Member createMember(String myId, String password, String name, String email) {
        return new Member(myId, password, name, email);
     }
-
-   /* public static Member findMember(String myId, String password) {
-
-    }*/
 }

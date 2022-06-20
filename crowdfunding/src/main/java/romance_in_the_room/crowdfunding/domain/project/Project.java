@@ -1,6 +1,7 @@
 package romance_in_the_room.crowdfunding.domain.project;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import romance_in_the_room.crowdfunding.domain.support.Support;
 import romance_in_the_room.crowdfunding.domain.member.Member;
 
@@ -11,6 +12,7 @@ import java.util.List;
 
 @Entity
 @Getter
+@NoArgsConstructor
 public class Project {
 
     @Id
@@ -35,10 +37,6 @@ public class Project {
     private String projectName;
 
     private LocalDateTime projectOpenDate;
-
-    protected Project() {
-
-    }
 
     protected Project(String projectName, Member member, ProjectGoal projectGoal, ProjectStory projectStory) {
         this.projectName = projectName;

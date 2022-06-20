@@ -26,7 +26,7 @@ public class ProjectController {
     @PostMapping("/crowdfunding/project/post")
     public PostProjectResponse postNewProject(@RequestBody @Valid PostProjectRequest request) {
         Member projectMaker = memberService.findMember(request.getMemberId());
-        ProjectGoal projectGoal = ProjectGoal.createProjectGoal();
+        ProjectGoal projectGoal = ProjectGoal.createProjectGoal(request.getProjectName());
 
         //임시조치
         ProjectStory projectStory = new ProjectStory();
