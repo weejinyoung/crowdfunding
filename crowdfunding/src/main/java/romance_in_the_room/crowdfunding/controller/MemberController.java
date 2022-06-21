@@ -2,6 +2,7 @@ package romance_in_the_room.crowdfunding.controller;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import romance_in_the_room.crowdfunding.domain.member.Member;
@@ -17,8 +18,8 @@ public class MemberController {
     private final MemberService memberService;
 
     @PostMapping ("member/join")
-    public joinNewMemberResponse joinNewMember(@RequestBody @Valid joinNewMemberRequest request) {
-        Member member = Member.createMember(request.getMyId(), request.getPassword(), request.getName(), request.getEmail());
+    public joinNewMemberResponse joinNewMember(@RequestBody joinNewMemberRequest request) {
+        Member member = Member.createMember(request.getLoginId(), request.getPassword(), request.getName(), request.getEmail());
         Long id = memberService.joinMember(member);
         return new joinNewMemberResponse(id);
     }
@@ -49,8 +50,9 @@ public class MemberController {
 
     @Data
     @AllArgsConstructor
+    @NoArgsConstructor
     static class joinNewMemberRequest {
-        String myId;
+        String loginId;
         String password;
         String name;
         String email;

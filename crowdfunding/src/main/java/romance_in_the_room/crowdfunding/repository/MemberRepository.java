@@ -33,16 +33,16 @@ public class MemberRepository {
                 .getResultList();
     }
 
-    public Member findByLoginId(String myId) {
+    public List<Member> findByLoginId(String myId) {
         return em.createQuery("select m from Member m where m.loginId = :loginId", Member.class)
                 .setParameter("loginId", myId)
-                .getSingleResult();
+                .getResultList();
     }
 
-    public Member findByPassword(String password) {
+    public List<Member> findByPassword(String password) {
         return em.createQuery("select m from Member m where m.password = :password", Member.class)
                 .setParameter("password", password)
-                .getSingleResult();
+                .getResultList();
     }
 
 /*

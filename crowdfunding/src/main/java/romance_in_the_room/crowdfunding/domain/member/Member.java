@@ -60,7 +60,7 @@ public class Member {
         this.createdDate = LocalDateTime.now();
     }
 
-    public static Member createMember(String myId, String password, String name, String email) {
-       return new Member(myId, password, name, email);
+    public static Member createMember(String loginId, String password, String name, String email) {
+       return new Member(loginId, password, name, email);
     }
 }
