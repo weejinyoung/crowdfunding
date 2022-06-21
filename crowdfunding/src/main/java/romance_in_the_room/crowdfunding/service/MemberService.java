@@ -42,7 +42,7 @@ public class MemberService {
 
     private void validateDuplicateMember(String loginId) {
         List<Member> findMember = memberRepository.findByLoginId(loginId);
-        if (findMember.isEmpty()) {
+        if (!findMember.isEmpty()) {
             throw new IllegalStateException("이미 존재하는 회원입니다.");
         }
     }
