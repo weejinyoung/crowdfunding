@@ -1,6 +1,6 @@
 package romance_in_the_room.crowdfunding.config;
 
-//import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
-public class SecurityConfig {
+public class SecurityConfig extends WebSecurityConfigurerAdapter{
 }
