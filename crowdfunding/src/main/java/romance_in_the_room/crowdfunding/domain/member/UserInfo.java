@@ -20,17 +20,17 @@ import java.util.Set;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Getter
-public class User implements UserDetails {
+public class UserInfo implements UserDetails {
 
     @Id
     @Column(name = "code")
     @GeneratedValue
     private Long code;
 
-    @Column(name = "loginId")
+    @Column(name = "loginId", unique = true)
     private String loginId;
 
-    @Column(name = "password")
+    @Column(name = "password", unique = true)
     private String password;
 
     @Column(name = "email", unique = true)
@@ -41,7 +41,7 @@ public class User implements UserDetails {
     private String auth;
 
     @Builder
-    public User(String loginId, String password, String email, String auth) {
+    public UserInfo(String loginId, String password, String email, String auth) {
         this.loginId = loginId;
         this.password = password;
         this.email = email;
@@ -65,26 +65,26 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return null;
+        return getLoginId();
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 }
