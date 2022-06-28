@@ -1,4 +1,4 @@
-package romance_in_the_room.crowdfunding.controller.dto;
+package romance_in_the_room.crowdfunding.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;

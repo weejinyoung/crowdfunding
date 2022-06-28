@@ -1,5 +1,6 @@
 package romance_in_the_room.crowdfunding.domain.project;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import romance_in_the_room.crowdfunding.domain.support.Support;
@@ -38,15 +39,16 @@ public class Project {
 
     private LocalDateTime projectOpenDate;
 
-    protected Project(String projectName, Member member, ProjectGoal projectGoal, ProjectStory projectStory) {
+    @Builder
+    public Project(String projectName, Member projectMaker, ProjectGoal projectGoal, ProjectStory projectStory) {
         this.projectName = projectName;
-        this.projectMaker = member;
+        this.projectMaker = projectMaker;
         this.projectGoal = projectGoal;
         this.projectStory = projectStory;
         this.projectOpenDate = LocalDateTime.now();
     }
 
-    public static Project createProject(String projectName, Member member, ProjectGoal projectGoal, ProjectStory projectStory) {
-        return new Project(projectName, member, projectGoal, projectStory);
-    }
+//    public static Project createProject(String projectName, Member member, ProjectGoal projectGoal, ProjectStory projectStory) {
+//        return new Project(projectName, member, projectGoal, projectStory);
+//    }
 }

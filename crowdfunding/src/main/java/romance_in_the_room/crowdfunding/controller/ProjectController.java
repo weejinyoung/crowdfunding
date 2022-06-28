@@ -3,10 +3,8 @@ package romance_in_the_room.crowdfunding.controller;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import romance_in_the_room.crowdfunding.controller.dto.PostProjectDto;
 import romance_in_the_room.crowdfunding.domain.member.Member;
 import romance_in_the_room.crowdfunding.domain.project.Project;
 import romance_in_the_room.crowdfunding.domain.project.ProjectGoal;
@@ -24,15 +22,17 @@ public class ProjectController {
     private final MemberService memberService;
 
     @PostMapping("/crowdfunding/project/post")
-    public PostProjectResponse postNewProject(@RequestBody @Valid PostProjectRequest request) {
-        Member projectMaker = memberService.findMember(request.getMemberId());
-        ProjectGoal projectGoal = ProjectGoal.createProjectGoal(request.getProjectName());
+    public PostProjectResponse postNewProject(
+            @PathVariable Long projectMakerId,
+            @RequestBody @Valid PostProjectDto postProjectDto) {
+
+        //ProjectGoal projectGoal = ProjectGoal.createProjectGoal(request.getProjectName());
 
         //임시조치
-        ProjectStory projectStory = new ProjectStory();
+       // ProjectStory projectStory = new ProjectStory();
 
-        Project project = Project.createProject(request.getProjectName(), projectMaker, projectGoal, projectStory);
-        Long projectId = projectService.postProject(project);
+        //Project project = Project.createProject(request.getProjectName(), projectMaker, projectGoal, projectStory);
+        Long projectId = projectService.postProject(projectMakerId, postProjectDto);
         return new PostProjectResponse(projectId);
     }
 
