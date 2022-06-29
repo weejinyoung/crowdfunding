@@ -21,7 +21,7 @@ public class ProjectController {
     private final ProjectService projectService;
     private final MemberService memberService;
 
-    @PostMapping("/crowdfunding/project/post")
+    @PostMapping("/crowdfunding/project/post/{projectMakerId}")
     public PostProjectResponse postNewProject(
             @PathVariable Long projectMakerId,
             @RequestBody @Valid PostProjectDto postProjectDto) {
