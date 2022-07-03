@@ -19,22 +19,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/css/**", "/js/**", "/img/**");
+        web.ignoring().
+                antMatchers("/css/**", "/js/**", "/img/**");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/login", "/join", "/member").permitAll()
-                .anyRequest().authenticated()
-                .and()
+                .antMatchers("/login", "/signup").permitAll()
+                    .anyRequest().authenticated()
+                    .and()
                 .formLogin()
-                .loginPage("/login")
-                .defaultSuccessUrl("/")
-                .and()
+                    .loginPage("/login")
+                    .defaultSuccessUrl("/")
+                    .and()
                 .logout()
-                .logoutSuccessUrl("/login")
-                .invalidateHttpSession(true);
+                    .logoutSuccessUrl("/login")
+                    .invalidateHttpSession(true);
     }
 
 //    @Override
